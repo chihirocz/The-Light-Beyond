@@ -19,7 +19,7 @@ public class Rotation : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-       // Debug.Log("collision");
+        Debug.Log("collision");
         Xaxis = -Xaxis;
         Yaxis = -Yaxis;
         Zaxis = -Zaxis;
