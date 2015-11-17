@@ -3,7 +3,7 @@ using System.Collections;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 
-public class Movement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 
 
@@ -45,7 +45,9 @@ public class Movement : MonoBehaviour
             transform.Translate(Vector3.forward * speed * Input.GetAxis("Vertical"));
         }
 
-        Screen.lockCursor = lockCursor;
+        //Screen.lockCursor = lockCursor;
+        Cursor.lockState = UnityEngine.CursorLockMode.Locked;
+        Cursor.visible = false;
 
         // Allow the script to clamp based on a desired target value.
         var targetOrientation = Quaternion.Euler(targetDirection);

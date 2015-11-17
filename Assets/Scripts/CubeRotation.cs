@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class Rotation : MonoBehaviour {
+public class CubeRotation : MonoBehaviour {
 
     /*[Range(-100,100)]*/
     public float Xaxis = 0;
@@ -11,6 +11,7 @@ public class Rotation : MonoBehaviour {
     /*[Range(-100,100)]*/
     public float Zaxis = 0;
 
+    public bool rotate = true;
 
     // Use this for initialization
     void Start() {
@@ -19,7 +20,7 @@ public class Rotation : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-       // Debug.Log("collision");
+        Debug.Log("collision");
         Xaxis = -Xaxis;
         Yaxis = -Yaxis;
         Zaxis = -Zaxis;
@@ -29,7 +30,10 @@ public class Rotation : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        transform.Rotate(Xaxis * Time.deltaTime, Yaxis * Time.deltaTime, Zaxis * Time.deltaTime);
-	}
+        if (rotate)
+        {
+            transform.Rotate(Xaxis * Time.deltaTime, Yaxis * Time.deltaTime, Zaxis * Time.deltaTime);
+        }
+    }
 }
 
