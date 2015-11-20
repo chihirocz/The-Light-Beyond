@@ -17,7 +17,7 @@ public class GenerateMap : MonoBehaviour {
     public int minCubeRotation;
     public int maxCubeRotation;
 
-
+    public Material cubeMaterial;
 
 
     // Use this for initialization
@@ -28,7 +28,9 @@ public class GenerateMap : MonoBehaviour {
 
         while (actualDensity < density) {
             //Collider[] checkResult;
-             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            Renderer rend = cube.GetComponent<Renderer>();
+            rend.material = cubeMaterial;
             /*do
             {*/
                 cube.transform.position = new Vector3(Random.Range(-mapSize, mapSize),
@@ -43,7 +45,7 @@ public class GenerateMap : MonoBehaviour {
             } while (checkResult.Length != 0);*/
 
 
-            var c = cube.AddComponent<Rotation>();
+            var c = cube.AddComponent<CubeRotation>();
             c.Xaxis = Random.Range(minCubeRotation, maxCubeRotation);
             c.Yaxis = Random.Range(minCubeRotation, maxCubeRotation);
             c.Zaxis = Random.Range(minCubeRotation, maxCubeRotation);

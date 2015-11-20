@@ -21,7 +21,7 @@ public class Navigation : MonoBehaviour {
 
 	void Update ()
 	{
-		navigator.SetActive (navigatorVisible);
+		//navigator.SetActive (navigatorVisible);
 		//renderer.enabled = navigatorVisible;
 	}
 
