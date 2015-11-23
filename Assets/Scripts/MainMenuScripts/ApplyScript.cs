@@ -16,7 +16,7 @@ public class ApplyScript : MonoBehaviour {
 
     void OnMouseDown()
     {
-        Screen.SetResolution(resValScript.widthResolution[slidResScript.position], resValScript.heightResolution[slidResScript.position], true);
+        Screen.SetResolution(resValScript.widthResolution[slidResScript.position], resValScript.heightResolution[slidResScript.position], false);
         mainMenuManagerScript.rotateToBasicSide();
     }
 }
