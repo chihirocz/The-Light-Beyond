@@ -68,6 +68,8 @@ public class MainMenuManager : MonoBehaviour {
         CloseExitMenu();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        //RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
+        //RenderSettings.ambientLight = Color.white;
     }
 
     public void rotateToOptionSide()
