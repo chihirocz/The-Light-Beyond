@@ -9,6 +9,7 @@ public class MainMenuManager : MonoBehaviour {
     float rotationSpeed = 90.0f;
     public float tmpview = 5;
     float rotation;
+    public GameObject[] backSides;
 
     public void LoadScane(int level)
     {
@@ -34,7 +35,7 @@ public class MainMenuManager : MonoBehaviour {
         float actualPoss = menuCube.transform.eulerAngles.y;
 
         tmpview = actualPoss;
-        if ((sideToRotate.y - actualPoss < 1.0f) && (sideToRotate.y - actualPoss > -1.0f))
+        if ((sideToRotate.y - actualPoss < 1.5f) && (sideToRotate.y - actualPoss > -1.5f))
         {
             rotation = 0.0f;
         }
@@ -68,8 +69,10 @@ public class MainMenuManager : MonoBehaviour {
         CloseExitMenu();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        //RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
-        //RenderSettings.ambientLight = Color.white;
+        for(int i = 0; i < backSides.Length; i++)
+        {
+            backSides[i].SetActive(false);
+        }
     }
 
     public void rotateToOptionSide()
@@ -87,6 +90,12 @@ public class MainMenuManager : MonoBehaviour {
     public void rotateToBasicSide()
     {
         sideToRotate = new Vector3(0.0f, 0.0f, 0.0f);
+        setRotation();
+    }
+
+    public void rotateToBacSide()
+    {
+        sideToRotate = new Vector3(0.0f, 180.0f, 0.0f);
         setRotation();
     }
 }
