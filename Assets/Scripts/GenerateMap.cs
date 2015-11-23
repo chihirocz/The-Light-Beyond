@@ -31,6 +31,7 @@ public class GenerateMap : MonoBehaviour {
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             Renderer rend = cube.GetComponent<Renderer>();
             rend.material = cubeMaterial;
+            cube.tag = "Cube";
             /*do
             {*/
                 cube.transform.position = new Vector3(Random.Range(-mapSize, mapSize),

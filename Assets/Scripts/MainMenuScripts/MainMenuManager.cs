@@ -66,6 +66,8 @@ public class MainMenuManager : MonoBehaviour {
         sideToRotate = new Vector3(0.0f, 0.0f, 0.0f);
         rotateToBasicSide();
         CloseExitMenu();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void rotateToOptionSide()

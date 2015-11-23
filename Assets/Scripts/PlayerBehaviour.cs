@@ -21,6 +21,8 @@ public class PlayerBehaviour : MonoBehaviour {
     CubeFreezer myFreez;
     Navigation myNav;
 
+    public string levelAfter;
+
 
     // Use this for initialization
     void Start () 
@@ -82,7 +84,8 @@ public class PlayerBehaviour : MonoBehaviour {
         }
         else if (col.gameObject.tag == "Light")
         {
-			// TO DO nextLevel
+            // TO DO nextLevel
+            Application.LoadLevel(levelAfter);
 			Debug.Log("next level");
         }
         else if (col.gameObject.tag == "CubeDisappearer")
