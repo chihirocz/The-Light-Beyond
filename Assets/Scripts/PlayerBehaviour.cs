@@ -8,6 +8,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	public float xStartingPos = 0f;
 	public float yStartingPos = 0f;
 	public float zStartingPos = 0f;
+    private Vector3 starting_position;
 
     private bool cubeDisappearerOn;
     private bool cubeFreezerOn;
@@ -27,8 +28,10 @@ public class PlayerBehaviour : MonoBehaviour {
     // Use this for initialization
     void Start () 
 	{
-		this.transform.position = new Vector3(xStartingPos, yStartingPos, zStartingPos);
+		//this.transform.position = new Vector3(xStartingPos, yStartingPos, zStartingPos);
+        this.starting_position = this.transform.position;
 
+        Debug.Log("starting scene");
         if (cubeObjects != null)
         {
             Array.Clear(cubeObjects, 0, cubeObjects.Length);
@@ -38,7 +41,7 @@ public class PlayerBehaviour : MonoBehaviour {
         cubeDisappearerOn = false;
         cubeFreezerOn = false;
         navigationOn = false;
-        lifes = 1;
+        lifes = 2;
 
 		random = new System.Random ();
         myDis = gameObject.AddComponent <CubeDisappearer>() as CubeDisappearer;
@@ -49,24 +52,21 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
             if (cubeDisappearerOn)
             {
                 myDis.Run();
                 cubeDisappearerOn = false;
             }
-            else if (cubeFreezerOn)
+            if (cubeFreezerOn)
             {
                 myFreez.Run();
                 cubeFreezerOn = false;
             }
-            else if (navigationOn)
+            if (navigationOn)
             {
                 myNav.Run();
                 navigationOn = false;
             }
-        }
 	}
 
 
@@ -75,12 +75,14 @@ public class PlayerBehaviour : MonoBehaviour {
         if (col.gameObject.tag == "Cube")
         {
             lifes--;
-			this.transform.position = new Vector3(xStartingPos, yStartingPos, zStartingPos);;
+			/*this.transform.position = this.starting_position;
 			if (lifes == 0)
             {
 				// TO DO restart
 				Debug.Log("restart");
 			}
+             */
+            Application.LoadLevel(Application.loadedLevel);
         }
         else if (col.gameObject.tag == "Light")
         {
@@ -90,21 +92,26 @@ public class PlayerBehaviour : MonoBehaviour {
         }
         else if (col.gameObject.tag == "CubeDisappearer")
         {
+            col.gameObject.SetActive(false);
             cubeDisappearerOn = true;
             Debug.Log("cube disappeared");
         }
         else if (col.gameObject.tag == "CubeFreezer")
         {
+            col.gameObject.SetActive(false);
             cubeFreezerOn = true;
             Debug.Log("cube freezer");
         }
         else if (col.gameObject.tag == "Navigation")
         {
+
+            col.gameObject.SetActive(false);
             navigationOn = true;
             Debug.Log("navigation");
         }
         else if (col.gameObject.tag == "PlusLife")
         {
+            col.gameObject.SetActive(false);
             lifes++;
             Debug.Log("plus life");
         }
