@@ -35,9 +35,10 @@ public class MainMenuManager : MonoBehaviour {
         float actualPoss = menuCube.transform.eulerAngles.y;
 
         tmpview = actualPoss;
-        if ((sideToRotate.y - actualPoss < 1.5f) && (sideToRotate.y - actualPoss > -1.5f))
+        if ((sideToRotate.y - actualPoss < Mathf.Abs( rotation * Time.deltaTime)) && (sideToRotate.y - actualPoss > - Mathf.Abs(rotation * Time.deltaTime)))
         {
             rotation = 0.0f;
+            menuCube.transform.localEulerAngles = sideToRotate;
         }
         menuCube.transform.Rotate(0.0f, rotation * Time.deltaTime, 0.0f);
     }
