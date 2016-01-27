@@ -2,22 +2,33 @@ Initialize engine version: 5.2.2f1 (3757309da7e7)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: AMD Radeon HD 5700 Series (ID=0x68b8)
-    Vendor:   ATI
-    VRAM:     1017 MB
+    Renderer: NVIDIA GeForce GTX 650 Ti (ID=0x11c6)
+    Vendor:   NVIDIA
+    VRAM:     1994 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: D:\škola\pv255\git\Follow-the-light\druheOdovzdanie_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading D:\škola\pv255\git\Follow-the-light\druheOdovzdanie_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: D:\škola\pv255\git\Follow-the-light\druheOdovzdanie_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading D:\škola\pv255\git\Follow-the-light\druheOdovzdanie_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: D:\škola\pv255\git\Follow-the-light\druheOdovzdanie_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading D:\škola\pv255\git\Follow-the-light\druheOdovzdanie_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: D:\škola\pv255\git\Follow-the-light\druheOdovzdanie_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading D:\škola\pv255\git\Follow-the-light\druheOdovzdanie_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: D:\škola\pv255\git\Follow-the-light\druheOdovzdanie_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading D:\škola\pv255\git\Follow-the-light\druheOdovzdanie_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: D:\škola\pv255\git\Follow-the-light\druheOdovzdanie_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.324 seconds
-desktop: 1920x1200 60Hz; virtual: 1920x1200 at 0,0
+Platform assembly: E:\GIT\Follow-the-light\druheOdovzdanie_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\GIT\Follow-the-light\druheOdovzdanie_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\GIT\Follow-the-light\druheOdovzdanie_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading E:\GIT\Follow-the-light\druheOdovzdanie_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: E:\GIT\Follow-the-light\druheOdovzdanie_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\GIT\Follow-the-light\druheOdovzdanie_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\GIT\Follow-the-light\druheOdovzdanie_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading E:\GIT\Follow-the-light\druheOdovzdanie_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: E:\GIT\Follow-the-light\druheOdovzdanie_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading E:\GIT\Follow-the-light\druheOdovzdanie_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: E:\GIT\Follow-the-light\druheOdovzdanie_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.040 seconds
+desktop: 1280x1024 60Hz; virtual: 1280x1024 at 0,0
 <RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: E:\GIT\Follow-the-light\druheOdovzdanie_Data\Managed\System.dll (this message is harmless)
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 3c -> priority: 1 
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.902147 ms
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 238.
+Total: 0.232734 ms (FindLiveObjects: 0.022941 ms CreateObjectMapping: 0.023545 ms MarkObjects: 0.160589 ms  DeleteObjects: 0.024752 ms)
+

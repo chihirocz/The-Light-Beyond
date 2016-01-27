@@ -11,14 +11,24 @@ public class MainMenuManager : MonoBehaviour {
     float rotation;
     public GameObject[] backSides;
 
+    private GameManager gameManagerScript = null;
+
     public void LoadScane(int level)
     {
-        Application.LoadLevel(level);
+        if(gameManagerScript != null)
+        {
+            gameManagerScript.LoadLevel(level);
+        }
+        //Application.LoadLevel(level);
     }
 
     public void ExitApplication()
     {
-        Application.Quit();
+        if(gameManagerScript != null)
+        {
+            gameManagerScript.ExitApplication();
+        }
+        //Application.Quit();
     }
 
     public void OpenExitMenu()
@@ -73,6 +83,15 @@ public class MainMenuManager : MonoBehaviour {
         for(int i = 0; i < backSides.Length; i++)
         {
             backSides[i].SetActive(false);
+        }
+
+        GameObject gameManager = GameObject.Find("GameManager");
+        if(gameManager != null)
+        {
+            gameManagerScript = gameManager.GetComponent<GameManager>();
+        } else
+        {
+            Debug.Log("GameManager is null in MainMenuManager");
         }
     }
 
