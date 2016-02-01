@@ -35,6 +35,10 @@ public class PlayerMovement : MonoBehaviour
 
         // Set target direction for the character body to its inital state.
         if (characterBody) targetCharacterDirection = characterBody.transform.localRotation.eulerAngles;
+
+		//Screen.lockCursor = lockCursor;
+		Cursor.lockState = UnityEngine.CursorLockMode.Locked;
+		Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -44,10 +48,6 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.Translate(Vector3.forward * speed * Input.GetAxis("Vertical"));
         }
-
-        //Screen.lockCursor = lockCursor;
-        Cursor.lockState = UnityEngine.CursorLockMode.Locked;
-        Cursor.visible = false;
 
         // Allow the script to clamp based on a desired target value.
         var targetOrientation = Quaternion.Euler(targetDirection);
