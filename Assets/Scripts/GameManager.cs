@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour {
 
     void OnGUI()
     {
-        if (Event.current.Equals(Event.KeyboardEvent("escape")))
+		if (Event.current.Equals(Event.KeyboardEvent("escape")) && !(SceneManager.Equals(SceneManager.GetActiveScene(), SceneManager.GetSceneByName("MainMenu"))))
         {
             LoadLevel(1);
         }          

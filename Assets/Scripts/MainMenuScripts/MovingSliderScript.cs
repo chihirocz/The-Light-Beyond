@@ -27,8 +27,11 @@ public class MovingSliderScript : MonoBehaviour {
     {
 
         Vector3 mousePosition = new Vector3(Input.mousePosition.x, basePosition.y, basePosition.z);
-        Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        Vector3 realPosition = new Vector3(-objPosition.x, basePosition.y, basePosition.z);
+        //Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+		Vector3 objPosition = Camera.main.ScreenToViewportPoint(mousePosition);
+		Vector3 obj2Position = Camera.main.ViewportToWorldPoint (objPosition);
+        //Vector3 realPosition = new Vector3(-objPosition.x, basePosition.y, basePosition.z);
+		Vector3 realPosition = new Vector3(-obj2Position.x * 3.2f, basePosition.y, basePosition.z);
         realPosition.x = Mathf.Clamp(realPosition.x, min, max);
         transform.position = realPosition;
     }

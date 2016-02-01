@@ -15,6 +15,6 @@ public class SelectBackMenuButtonScript : MonoBehaviour {
     void OnMouseDown()
     {
         Back.SetActive(true);
-        mainMenuManagerScript.rotateToBacSide();
+        mainMenuManagerScript.rotateToBackSide();
     }
 }
