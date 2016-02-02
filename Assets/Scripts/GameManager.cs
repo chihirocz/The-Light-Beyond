@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null;
     private GenerateMap mapGenerator;
+	public GameObject gameMenu;
+	public GameObject gameExitMenu;
     //public LevelManager levelManager;    
 
 
@@ -180,9 +183,14 @@ public class GameManager : MonoBehaviour {
 
     void OnGUI()
     {
-        if (Event.current.Equals(Event.KeyboardEvent("escape")))
+		if (Event.current.Equals(Event.KeyboardEvent("escape")))
         {
-            LoadLevel(1);
+			//v MainMenu je ošetrené stalačenie Escape
+			if (!(SceneManager.Equals (SceneManager.GetActiveScene (), SceneManager.GetSceneByName ("MainMenu")))) {
+				GameWindowMenuOpen ();
+				Pause ();
+			}
+            //LoadLevel(1);
         }          
     }
 
@@ -200,4 +208,72 @@ public class GameManager : MonoBehaviour {
     {
         currentLevel = level;
     }
+
+	public void Pause()
+	{
+		Time.timeScale = 0;
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+		PlayerMovement pm = PlayerMovement.FindObjectOfType<PlayerMovement>();
+		if(pm != null){
+		pm.enabled = false;
+		}
+	}
+
+	public void Unpause()
+	{
+		Time.timeScale = 1;
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
+		PlayerMovement pm = PlayerMovement.FindObjectOfType<PlayerMovement>();
+		if(pm != null){
+			pm.enabled = true;
+		}
+	}
+
+	public void Restart()
+	{
+		//moze sa menit nie som si isty ci to takto chceme
+		LoadLevel (SceneManager.GetActiveScene ().buildIndex);
+	}
+
+	public void GameWindowMenuClose()
+	{
+		StopMenuWindowInteraction ();
+		gameMenu.SetActive (false);
+	}
+
+	public void GameWindowMenuOpen()
+	{
+		StartMenuWindowInteraction ();
+		gameMenu.SetActive (true);
+	}
+
+	public void GameExitMenuOpen()
+	{
+		StopMenuWindowInteraction ();
+		gameExitMenu.SetActive (true);
+	}
+
+	public void GameExitMenuClose()
+	{
+		StartMenuWindowInteraction ();
+		gameExitMenu.SetActive (false);
+	}
+
+	private void StopMenuWindowInteraction()
+	{
+		Button [] buttons = gameMenu.GetComponentsInChildren<Button>();
+		foreach(Button button in buttons){
+			button.interactable = false;
+		}
+	}
+
+	private void StartMenuWindowInteraction()
+	{
+		Button [] buttons = gameMenu.GetComponentsInChildren<Button>();
+		foreach(Button button in buttons){
+			button.interactable = true;
+		}
+	}
 }
