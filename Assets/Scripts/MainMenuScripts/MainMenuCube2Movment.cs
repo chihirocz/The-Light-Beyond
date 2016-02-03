@@ -13,8 +13,6 @@ public class MainMenuCube2Movment : MonoBehaviour {
 	public int X;
 	public int Y;
 	public int Z;
-	int count = 0;
-	float start;
 
 	/*void Start (){
 		start = 
