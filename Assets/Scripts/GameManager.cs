@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour {
 		levelsDone = PlayerPrefs.GetInt ("levelsDone");
 		musicVolume = PlayerPrefs.GetFloat ("musicVolume", 1.0f);
 		soundVolume = PlayerPrefs.GetFloat ("soundVolume", 1.0f);
+
         for(int i=1; i<totalNumberOfLevels; i++)
         {
             SceneManager.LoadScene(i);
@@ -297,6 +298,8 @@ public class GameManager : MonoBehaviour {
 
 	public void setMusicVolume(float volume){
 		musicVolume = volume;
+
+        GameManager.instance.GetComponent<AudioSource>().volume = musicVolume;
 	}
 
 	public void setSoundVolume(float volume){
