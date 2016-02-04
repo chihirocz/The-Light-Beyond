@@ -8,9 +8,11 @@ public class MovingSliderScript : MonoBehaviour {
     public Vector3 basePosition;
     public float value = 1;
     float lengthOfSlider;
+	GameManager gm;
     
     void Start () {
         lengthOfSlider = max - min;
+		gm = GameObject.FindObjectOfType<GameManager> ();
     }
 	
 	void Update () {
@@ -40,5 +42,12 @@ public class MovingSliderScript : MonoBehaviour {
     {
         value = (transform.position.x - min) / lengthOfSlider;
     }
+
+	public void setVolume(float volume){
+		if (gm != null) {
+			value = volume;
+			transform.localPosition = new Vector3( max - value * lengthOfSlider, transform.localPosition.y, transform.localPosition.z);
+		}
+	}
 
 }

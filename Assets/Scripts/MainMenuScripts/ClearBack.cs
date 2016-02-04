@@ -13,6 +13,11 @@ public class ClearBack : MonoBehaviour {
 
     void OnMouseDown()
     {
-        actualBackSide.SetActive(false);
+		StartCoroutine ("waitLittle");
     }
+
+	IEnumerator waitLittle(){
+		yield return new WaitForSeconds (0.5f);
+		actualBackSide.SetActive(false);
+	}
 }

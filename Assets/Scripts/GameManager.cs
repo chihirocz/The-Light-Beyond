@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour {
     public int increaseMinCubeRotation = 0;
     public int increaseMaxCubeRotation = 10;
 
+	public float musicVolume;
+	public float soundVolume;
+
     public int numberOfLifes = 1;
 
     public static GameManager instance = null;
@@ -46,6 +49,8 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 
 		levelsDone = PlayerPrefs.GetInt ("levelsDone");
+		musicVolume = PlayerPrefs.GetFloat ("musicVolume", 1.0f);
+		soundVolume = PlayerPrefs.GetFloat ("soundVolume", 1.0f);
         for(int i=1; i<totalNumberOfLevels; i++)
         {
             SceneManager.LoadScene(i);
@@ -202,6 +207,8 @@ public class GameManager : MonoBehaviour {
 
     public void ExitApplication()
     {
+		PlayerPrefs.SetFloat ("musicVolume", musicVolume);
+		PlayerPrefs.SetFloat ("soundVolume", soundVolume);
 		PlayerPrefs.SetInt ("levelsDone", levelsDone);
         Application.Quit();
     }
@@ -287,4 +294,13 @@ public class GameManager : MonoBehaviour {
 	public void increaseLevelDone(){
 		levelsDone++;
 	}
+
+	public void setMusicVolume(float volume){
+		musicVolume = volume;
+	}
+
+	public void setSoundVolume(float volume){
+		soundVolume = volume;
+	}
+		
 }
