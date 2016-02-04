@@ -46,7 +46,7 @@ public class MovingSliderScript : MonoBehaviour {
 	public void setVolume(float volume){
 		if (gm != null) {
 			value = volume;
-			transform.localPosition = new Vector3( max - value * lengthOfSlider, transform.localPosition.y, transform.localPosition.z);
+			transform.localPosition = new Vector3( (max - (1 - value) * lengthOfSlider)/7.87f, transform.localPosition.y, transform.localPosition.z);
 		}
 	}
 
