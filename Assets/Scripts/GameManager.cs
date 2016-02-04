@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour {
         allLevels = SceneManager.GetAllScenes(); 
         Debug.Log("number of levels " + allLevels.Length.ToString());
         SceneManager.LoadScene("MainMenu");
+        //Fading.Instance.StartFade("MainMenu");
     }
 	
 	// Update is called once per frame
@@ -75,13 +76,15 @@ public class GameManager : MonoBehaviour {
         if(levelName == allLevels[allLevels.Length - 1].name)
         {
             currentLevel++;
-            SceneManager.LoadScene(levelName);
+            //SceneManager.LoadScene(levelName);
+            Fading.Instance.StartFade(levelName);
             currentScene = SceneManager.GetActiveScene().buildIndex;
             Debug.Log("load level by name");
 
         } else
         {
-            SceneManager.LoadScene(levelName);
+            //SceneManager.LoadScene(levelName);
+            Fading.Instance.StartFade(levelName);
             currentScene = SceneManager.GetActiveScene().buildIndex;
         }
     }
@@ -92,13 +95,15 @@ public class GameManager : MonoBehaviour {
         {
             currentScene++;
             currentLevel++;
-            SceneManager.LoadScene(allLevels.Length - 1);
+            //SceneManager.LoadScene(allLevels.Length - 1);
+            Fading.Instance.StartFade(allLevels.Length - 1);
 
             Debug.Log("load level by number " + currentScene.ToString());
         } else
         {
             currentScene = levelNumber;
-            SceneManager.LoadScene(levelNumber);
+            //SceneManager.LoadScene(levelNumber);
+            Fading.Instance.StartFade(levelNumber);
         }  
     }
 
@@ -108,13 +113,15 @@ public class GameManager : MonoBehaviour {
         {
             currentScene++;
             currentLevel++;
-            SceneManager.LoadScene(allLevels.Length - 1);
+            //SceneManager.LoadScene(allLevels.Length - 1);
+            Fading.Instance.StartFade(allLevels.Length - 1);
 
             Debug.Log("load next level");
         } else
         {
             currentScene++;
-            SceneManager.LoadScene(currentScene);
+            //SceneManager.LoadScene(currentScene);
+            Fading.Instance.StartFade(currentScene);
         }
     }
 
@@ -123,7 +130,8 @@ public class GameManager : MonoBehaviour {
         if (levelName == allLevels[allLevels.Length - 1].name)
         {
             currentLevel++;
-            SceneManager.LoadScene(levelName);
+            //SceneManager.LoadScene(levelName);
+            Fading.Instance.StartFade(levelName);
             currentScene = SceneManager.GetActiveScene().buildIndex;
 
             Debug.Log("load level by name");
@@ -150,7 +158,8 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
-            SceneManager.LoadScene(levelName);
+            //SceneManager.LoadScene(levelName);
+            Fading.Instance.StartFade(levelName);
             currentScene = SceneManager.GetActiveScene().buildIndex;
         }
     }
@@ -161,7 +170,8 @@ public class GameManager : MonoBehaviour {
         {
             currentScene++;
             currentLevel++;
-            SceneManager.LoadScene(allLevels.Length - 1);
+            //SceneManager.LoadScene(allLevels.Length - 1);
+            Fading.Instance.StartFade(allLevels.Length - 1);
 
             Debug.Log("load level by number " + currentScene.ToString());
 
@@ -189,7 +199,8 @@ public class GameManager : MonoBehaviour {
         else
         {
             currentScene = levelNumber;
-            SceneManager.LoadScene(levelNumber);
+            //SceneManager.LoadScene(levelNumber);
+            Fading.Instance.StartFade(levelNumber);
         }
     }
 
