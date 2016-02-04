@@ -8,6 +8,7 @@ public class MapGeneratorEditor : Editor {
 	public override void OnInspectorGUI()
 	{
 		MapGenerator generator = (MapGenerator) target;
+		bool safe = true;
 
 
 
@@ -32,6 +33,8 @@ public class MapGeneratorEditor : Editor {
 		generator.minDepth = EditorGUILayout.IntField("minDepth",generator.minDepth);
 		generator.maxDepth = EditorGUILayout.IntField("maxDepth",generator.maxDepth);
 		generator.timesToMove = EditorGUILayout.IntField("times to move",generator.timesToMove);
+		generator.timesToUnsafeMove = EditorGUILayout.IntField("times to unsafe move",generator.timesToUnsafeMove);
+		generator.maxMove = EditorGUILayout.IntField("maxMove",generator.maxMove);
 
 		generator.safeZone = EditorGUILayout.FloatField("safeZone",generator.safeZone);
 
@@ -53,5 +56,18 @@ public class MapGeneratorEditor : Editor {
 		{
 			generator.makeSafe();
 		}
+
+		if(GUILayout.Button("unsafe move"))
+		{
+			safe = false;
+			generator.unsaveMove();
+		}
+
+		if(GUILayout.Button("try to make no collision"))
+		{
+			safe = generator.makeNonTuching();
+		}
+
+		EditorGUILayout.DelayedTextField("safe: " + safe.ToString());
 	}
 }

@@ -16,6 +16,7 @@ public class MapGenerator : MonoBehaviour {
 
 	public int minDepth;
 	public int maxDepth;
+	public int maxMove;
 
 	public float safeZone;
 
@@ -30,6 +31,7 @@ public class MapGenerator : MonoBehaviour {
 	public Object bonus4Obj;
 
 	public int timesToMove;
+	public int timesToUnsafeMove;
 
 	public int pRozdel;
 	public int pCube; 
@@ -62,7 +64,7 @@ public class MapGenerator : MonoBehaviour {
 				GameObject cube = father.transform.GetChild (i).gameObject;
 				Vector3 startPosition = cube.transform.localPosition;
 				cube.transform.rotation = Random.rotation;
-				cube.transform.localPosition += new Vector3 (Random.Range (1, 50) * 0.01f * cube.transform.localScale.x, Random.Range (1, 50) * 0.01f * cube.transform.localScale.y, Random.Range (1, 50) * 0.01f * cube.transform.localScale.z);
+				cube.transform.localPosition += new Vector3 (Random.Range (1, maxMove) * 0.01f * cube.transform.localScale.x, Random.Range (1, maxMove) * 0.01f * cube.transform.localScale.y, Random.Range (1, maxMove) * 0.01f * cube.transform.localScale.z);
 				//Collider[] colliders = Physics.OverlapSphere (cube.transform.localPosition, Mathf.Sqrt (3) * cube.transform.localScale.x);
 				Collider[] colliders = Physics.OverlapSphere (cube.transform.localPosition, Mathf.Sqrt(3) * cube.transform.localScale.x );
 				if (colliders.Length > 2) {
@@ -212,4 +214,73 @@ public class MapGenerator : MonoBehaviour {
 		}
 	}
 
+	public void unsaveMove(){
+		if (father == null) {
+			father = GameObject.Find ("Cubes");
+			if (father == null) {
+				print ("first generate");
+				return;
+			}
+		}
+		int numChilds = father.transform.childCount;
+		for (int i = 0; i < numChilds; i++) {
+			GameObject cube = father.transform.GetChild (i).gameObject;	
+			SphereCollider spcoll = cube.AddComponent<SphereCollider> ();
+			spcoll.center.Set (0.0f, 0.0f, 0.0f);
+			spcoll.radius = 0.8f;
+		}
+		for (int j = 0; j < timesToUnsafeMove; j++) {	
+			for (int i = 0; i < numChilds; i++) {
+				GameObject cube = father.transform.GetChild (i).gameObject;
+				Vector3 startPosition = cube.transform.localPosition;
+				cube.transform.rotation = Random.rotation;
+				cube.transform.localPosition += new Vector3 (Random.Range (1, maxMove) * 0.01f * cube.transform.localScale.x, Random.Range (1, maxMove) * 0.01f * cube.transform.localScale.y, Random.Range (1, maxMove) * 0.01f * cube.transform.localScale.z);
+			}
+		}
+		for (int i = 0; i < numChilds; i++) {
+			GameObject cube = father.transform.GetChild (i).gameObject;	
+			SphereCollider spcoll = cube.GetComponent<SphereCollider>();
+			DestroyImmediate(spcoll);
+		}
+	}
+
+
+	public bool makeNonTuching(){
+		if (father == null) {
+			father = GameObject.Find ("Cubes");
+			if (father == null) {
+				print ("first generate");
+				return false;
+			}
+		}
+		int numChilds = father.transform.childCount;
+		for (int i = 0; i < numChilds; i++) {
+			GameObject cube = father.transform.GetChild (i).gameObject;	
+			SphereCollider spcoll = cube.AddComponent<SphereCollider> ();
+			spcoll.center.Set (0.0f, 0.0f, 0.0f);
+			spcoll.radius = 0.8f;
+		}	
+		for (int i = 0; i < numChilds; i++) {
+			GameObject cube = father.transform.GetChild (i).gameObject;
+			Vector3 startPosition = cube.transform.localPosition;
+			int maxTries = 20;
+			int tries = 0;
+			Collider[] colliders;
+			do{
+				cube.transform.localPosition = startPosition;
+				cube.transform.rotation = Random.rotation;
+				cube.transform.localPosition += new Vector3 (Random.Range (1, maxMove) * 0.01f * cube.transform.localScale.x, Random.Range (1, maxMove) * 0.01f * cube.transform.localScale.y, Random.Range (1, maxMove) * 0.01f * cube.transform.localScale.z);
+				colliders = Physics.OverlapSphere (cube.transform.localPosition, Mathf.Sqrt(3) * cube.transform.localScale.x );
+				if(maxTries >= tries){
+					return false;
+				}
+			}while(colliders.Length > 2);
+		}
+		for (int i = 0; i < numChilds; i++) {
+			GameObject cube = father.transform.GetChild (i).gameObject;	
+			SphereCollider spcoll = cube.GetComponent<SphereCollider>();
+			DestroyImmediate(spcoll);
+		}
+		return true;
+	}
 }

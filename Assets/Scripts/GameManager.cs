@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
     private GenerateMap mapGenerator;
 	public GameObject gameMenu;
 	public GameObject gameExitMenu;
+	private int levelsDone;
     //public LevelManager levelManager;    
 
 
@@ -44,11 +45,12 @@ public class GameManager : MonoBehaviour {
 
         DontDestroyOnLoad(gameObject);
 
+		levelsDone = PlayerPrefs.GetInt ("levelsDone");
         for(int i=1; i<totalNumberOfLevels; i++)
         {
             SceneManager.LoadScene(i);
         }
-        allLevels = SceneManager.GetAllScenes();      
+        allLevels = SceneManager.GetAllScenes(); 
         Debug.Log("number of levels " + allLevels.Length.ToString());
         SceneManager.LoadScene("MainMenu");
     }
@@ -56,6 +58,10 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public int getLevelsDone(){
+		return levelsDone;
 	}
 
     public void LoadLevel(string levelName)
@@ -196,6 +202,7 @@ public class GameManager : MonoBehaviour {
 
     public void ExitApplication()
     {
+		PlayerPrefs.SetInt ("levelsDone", levelsDone);
         Application.Quit();
     }
 
@@ -275,5 +282,9 @@ public class GameManager : MonoBehaviour {
 		foreach(Button button in buttons){
 			button.interactable = true;
 		}
+	}
+
+	public void increaseLevelDone(){
+		levelsDone++;
 	}
 }

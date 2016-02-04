@@ -107,6 +107,7 @@ public class PlayerBehaviour : MonoBehaviour {
             Debug.Log("next level");
             if (gameManagerScript != null)
             {
+				gameManagerScript.increaseLevelDone ();
                 gameManagerScript.LoadNextLevel();
             }
         }
