@@ -20,6 +20,7 @@ public class PlayerBehaviour : MonoBehaviour {
     private CubeDisappearer myDis = null;
     private CubeFreezer myFreez = null;
     private Navigation myNav = null;
+	public string nextLevel;
 
     private GameManager gameManagerScript = null;
 
@@ -108,7 +109,7 @@ public class PlayerBehaviour : MonoBehaviour {
             if (gameManagerScript != null)
             {
 				gameManagerScript.increaseLevelDone ();
-                gameManagerScript.LoadNextLevel();
+				gameManagerScript.LoadLevel(nextLevel);
             }
         }
         else if (col.gameObject.tag == "CubeDisappearer")

@@ -3,16 +3,11 @@ using System.Collections;
 
 public class NewSceneScript : MonoBehaviour {
 
-    public GameObject mainMenuManager;
-    MainMenuManager mainMenuManagerScript;
     GameManager gameManagerScript = null;
     public string nameOfSceneToLoad = "";
-    public int difficultyOfLevel = 1;
 
     void Start()
     {
-        mainMenuManagerScript = mainMenuManager.GetComponent<MainMenuManager>();
-
         GameObject gameManager = GameObject.Find("GameManager");
         if (gameManager != null)
         {
@@ -28,13 +23,7 @@ public class NewSceneScript : MonoBehaviour {
     {
         if (gameManagerScript != null)
         {
-            if (nameOfSceneToLoad == "generated_scene")
-            {
-                gameManagerScript.LoadLevel(nameOfSceneToLoad, difficultyOfLevel);
-            } else
-            {
-                gameManagerScript.LoadLevel(nameOfSceneToLoad);
-            }
+            gameManagerScript.LoadLevel(nameOfSceneToLoad);
         }
     }
 }

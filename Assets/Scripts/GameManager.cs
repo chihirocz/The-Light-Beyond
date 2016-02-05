@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject gameMenu;
 	public GameObject gameExitMenu;
 	private int levelsDone;
+	private string actualScene;
     //public LevelManager levelManager;    
 
 
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour {
         allLevels = SceneManager.GetAllScenes(); 
         Debug.Log("number of levels " + allLevels.Length.ToString());
         SceneManager.LoadScene("MainMenu");
+		actualScene = "MainMenu";
         //Fading.Instance.StartFade("MainMenu");
     }
 	
@@ -71,8 +73,10 @@ public class GameManager : MonoBehaviour {
 		return levelsDone;
 	}
 
+	//not prefered
     public void LoadLevel(string levelName)
-    {
+	{
+		actualScene = levelName;
         if(levelName == allLevels[allLevels.Length - 1].name)
         {
             currentLevel++;
@@ -107,6 +111,7 @@ public class GameManager : MonoBehaviour {
         }  
     }
 
+	//prosim nepouzivat
     public void LoadNextLevel()
     {
         if(currentScene >= allLevels.Length-1)
@@ -125,6 +130,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+	//not used, hope
     public void LoadLevel(string levelName, int difficulty)
     {
         if (levelName == allLevels[allLevels.Length - 1].name)
@@ -164,6 +170,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+	//not used, hope
     public void LoadLevel(int levelNumber, int difficulty)
     {
         if (levelNumber >= allLevels.Length - 1)
@@ -260,7 +267,7 @@ public class GameManager : MonoBehaviour {
 	public void Restart()
 	{
 		//moze sa menit nie som si isty ci to takto chceme
-		LoadLevel (SceneManager.GetActiveScene ().buildIndex);
+		LoadLevel (actualScene);
 	}
 
 	public void GameWindowMenuClose()
@@ -316,5 +323,4 @@ public class GameManager : MonoBehaviour {
 	public void setSoundVolume(float volume){
 		soundVolume = volume;
 	}
-		
 }

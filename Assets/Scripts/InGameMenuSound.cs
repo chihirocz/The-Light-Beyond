@@ -12,7 +12,7 @@ public class InGameMenuSound : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		gm = GameObject.FindObjectOfType<GameManager> ();
-
+		audos = gm.GetComponent<AudioSource>();
 		onDown = Resources.Load ("Audio/switch") as AudioClip;
 		onExit = Resources.Load ("Audio/Click2") as AudioClip;
 		onEnter = Resources.Load ("Audio/Click2") as AudioClip;
@@ -20,21 +20,15 @@ public class InGameMenuSound : MonoBehaviour {
 	
 	public void onDownFunct()
 	{
-		audos = GameObject.Find("Player").GetComponent<AudioSource>();
-		if(gm != null){
+		if(audos != null){
 			audos.PlayOneShot (onDown, gm.soundVolume);
-		} else {
-			audos.PlayOneShot (onDown);
 		}
 	}
 
 	public void onEnterFunct()
 	{
-		audos = GameObject.Find("Player").GetComponent<AudioSource>();
-		if (gm != null) {
+		if (audos != null) {
 			audos.PlayOneShot (onEnter, gm.soundVolume * 0.5f);
-		} else {
-			audos.PlayOneShot (onEnter, 0.5f);
 		}
 	}
 }
