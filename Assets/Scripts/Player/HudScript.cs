@@ -27,7 +27,7 @@ public class HudScript : MonoBehaviour {
 		disappearIcon = GameObject.Find ("DisappearIcon");
 		plScript = player.GetComponent<PlayerBehaviour> ();
 		livesText = GameObject.Find ("LivesAmount");
-		livesText.GetComponent<Text> ().text = lives.ToString();
+
 		cfre = player.GetComponent<CubeFreezer> ();
 		cdis = player.GetComponent<CubeDisappearer> ();
 	}
@@ -44,5 +44,9 @@ public class HudScript : MonoBehaviour {
 		} else {
 			freezIcon.SetActive (cfre.isOn);
 		}
+		if (gm != null) {
+			lives = gm.numberOfLifes;
+		}
+		livesText.GetComponent<Text> ().text = lives.ToString();
 	}
 }

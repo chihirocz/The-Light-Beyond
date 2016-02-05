@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour {
     public void LoadLevel(string levelName)
 	{
 		actualScene = levelName;
+		numberOfLifes = 1;
         if(levelName == allLevels[allLevels.Length - 1].name)
         {
             currentLevel++;
