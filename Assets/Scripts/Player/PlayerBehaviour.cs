@@ -25,6 +25,14 @@ public class PlayerBehaviour : MonoBehaviour {
     private GameManager gameManagerScript = null;
 
 
+	public bool getDisappear(){
+		return cubeDisappearerOn;
+	}
+		
+	public bool getFreeze(){
+		return cubeFreezerOn;
+	}
+
     // Use this for initialization
     void Start () 
 	{
