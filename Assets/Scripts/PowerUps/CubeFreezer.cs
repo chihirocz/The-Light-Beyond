@@ -8,7 +8,7 @@ public class CubeFreezer : MonoBehaviour {
 	
 	private List<CubeRotation> rotationScriptsOfCubes = new List<CubeRotation>();
     private Timer timer;
-	
+	public bool isOn;
 
     void Start ()
     {
@@ -20,7 +20,7 @@ public class CubeFreezer : MonoBehaviour {
 			//Array.Clear (rotationScriptsOfCubes, 0, rotationScriptsOfCubes.Length);
 			rotationScriptsOfCubes.Clear();
 		}*/
-
+		isOn = false;
 		GameObject[] cubeObjects = GameObject.FindGameObjectsWithTag("Cube");
 
 		if (cubeObjects.Length != 0 && cubeObjects != null) 
@@ -35,6 +35,7 @@ public class CubeFreezer : MonoBehaviour {
     public void Run()
     {
         ContinueRotation(false);
+		isOn = true;
         SetTimer();
     }
 
@@ -52,6 +53,7 @@ public class CubeFreezer : MonoBehaviour {
     private void OnTimeEvent(object source, ElapsedEventArgs e)
     {
         ContinueRotation(true);
+		isOn = false;
     }
 
     private void SetTimer()

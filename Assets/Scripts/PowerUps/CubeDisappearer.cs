@@ -9,6 +9,7 @@ public class CubeDisappearer  : MonoBehaviour {
 	//private List<Renderer> renderers = new List<Renderer> ();
     private Timer timer;
 	private bool showCubes = true;
+	public bool isOn;
 
 
 	void Start () 
@@ -19,7 +20,7 @@ public class CubeDisappearer  : MonoBehaviour {
 		if (renderers != null || renderers.Length != 0) {
 			Array.Clear(renderers, 0, renderers.Length);
 		}*/	
-
+		isOn = false;
 		cubeObjects = GameObject.FindGameObjectsWithTag("Cube");
 
 		/*if (cubeObjects.Length != 0 && cubeObjects != null)
@@ -52,12 +53,14 @@ public class CubeDisappearer  : MonoBehaviour {
     public void Run()
     {
         showCubes = false;
+		isOn = true;
         SetTimer();
     }
 
     private void OnTimeEvent(object source, ElapsedEventArgs e)
     {
         showCubes = true;
+		isOn = false;
     }
 
     private void SetTimer()

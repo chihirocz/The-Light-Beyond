@@ -6,6 +6,8 @@ public class HudScript : MonoBehaviour {
 
 	public GameObject player;
 	PlayerBehaviour plScript;
+	CubeDisappearer cdis;
+	CubeFreezer cfre;
 	int lives;
 	GameManager gm;
 	GameObject freezIcon;
@@ -22,16 +24,25 @@ public class HudScript : MonoBehaviour {
 			lives = 1;
 		}
 		freezIcon = GameObject.Find ("FreezeIcon");
-		disappearIcon = GameObject.Find ("DisaooearIcon");
+		disappearIcon = GameObject.Find ("DisappearIcon");
 		plScript = player.GetComponent<PlayerBehaviour> ();
 		livesText = GameObject.Find ("LivesAmount");
 		livesText.GetComponent<Text> ().text = lives.ToString();
+		cfre = player.GetComponent<CubeFreezer> ();
+		cdis = player.GetComponent<CubeDisappearer> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		disappearIcon.SetActive (plScript.getDisappear());
-		freezIcon.SetActive (plScript.getFreeze ());
-
+		if (cdis == null) {
+			cdis = player.GetComponent<CubeDisappearer> ();
+		} else {
+			disappearIcon.SetActive (cdis.isOn);
+		}
+		if (cfre == null) {
+			cfre = player.GetComponent<CubeFreezer> ();
+		} else {
+			freezIcon.SetActive (cfre.isOn);
+		}
 	}
 }
