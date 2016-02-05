@@ -54,6 +54,10 @@ public class Fading : MonoBehaviour
     // -- Instantiate
     void InstantiateFade()
     {
+        if (FadePrefab == null)
+        {
+            Debug.Log("FadePrefab is null in InstantiateFade()");
+        }
         if (FadePrefab != null) 
             FadeSprite = Instantiate(FadePrefab, FadePrefab.transform.position, Quaternion.identity) as Canvas;
     }
@@ -63,6 +67,11 @@ public class Fading : MonoBehaviour
     {
         // -- Set Instance
         mInstance = this;
+
+        if (FadePrefab == null)
+        {
+            Debug.Log("FadePrefab is null");
+        }
         
         // -- Start Fading In
         StartFade(null, true);

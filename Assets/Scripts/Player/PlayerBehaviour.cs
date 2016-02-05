@@ -116,12 +116,14 @@ public class PlayerBehaviour : MonoBehaviour {
         {
             col.gameObject.SetActive(false);
             cubeDisappearerOn = true;
+            VignetteEffect.Instance.StartVignetteEffect(VignetteEffect.EffectType.POWERUP);
             Debug.Log("cube disappeared");
         }
         else if (col.gameObject.tag == "CubeFreezer")
         {
             col.gameObject.SetActive(false);
             cubeFreezerOn = true;
+            VignetteEffect.Instance.StartVignetteEffect(VignetteEffect.EffectType.POWERUP);
             Debug.Log("cube freezer");
         }
         else if (col.gameObject.tag == "Navigation")
@@ -129,11 +131,13 @@ public class PlayerBehaviour : MonoBehaviour {
 
             col.gameObject.SetActive(false);
             navigationOn = true;
+            VignetteEffect.Instance.StartVignetteEffect(VignetteEffect.EffectType.POWERUP);
             Debug.Log("navigation");
         }
         else if (col.gameObject.tag == "PlusLife")
         {
             col.gameObject.SetActive(false);
+            VignetteEffect.Instance.StartVignetteEffect(VignetteEffect.EffectType.POWERUP);
             if(gameManagerScript != null)
             {
                 gameManagerScript.numberOfLifes++;
@@ -164,6 +168,7 @@ public class PlayerBehaviour : MonoBehaviour {
                     Debug.Log("RandomPowerup plus life");
                     break;
             }
+            VignetteEffect.Instance.StartVignetteEffect(VignetteEffect.EffectType.POWERUP);
         }
     }
 
